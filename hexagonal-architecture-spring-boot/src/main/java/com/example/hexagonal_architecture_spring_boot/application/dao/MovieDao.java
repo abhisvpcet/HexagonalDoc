@@ -16,5 +16,5 @@ public interface MovieDao {
 
     void updateMovie(Movie newMovie);
 
-    void deleteMovie(Movie oldMovie);
+    void deleteByTitle(String oldMovieTitle);
 }

@@ -17,6 +17,7 @@ public class MoviesDaoAdapter implements MovieDao {
 
     @Autowired
     private MoviesRepository moviesRepository;
+
     @Override
     public Optional<Movie> findMovieByTitle(String title) {
         return moviesRepository.findMovieByTitle(title);
@@ -25,15 +26,15 @@ public class MoviesDaoAdapter implements MovieDao {
 
     @Override
     public List<Movie> findAllMovies() {
-         return ((List<MovieEntity>) moviesRepository.findAll())
-                  .stream()
-                  .map(movieEntity -> new Movie(
-                          movieEntity.id(),
-                          movieEntity.title(),
-                          movieEntity.description(),
-                          movieEntity.releaseDate(),
-                          movieEntity.directorName()
-                  )).toList();
+        return ((List<MovieEntity>) moviesRepository.findAll())
+                .stream()
+                .map(movieEntity -> new Movie(
+                        movieEntity.id(),
+                        movieEntity.title(),
+                        movieEntity.description(),
+                        movieEntity.releaseDate(),
+                        movieEntity.directorName()
+                )).toList();
 
     }
 
@@ -62,7 +63,8 @@ public class MoviesDaoAdapter implements MovieDao {
     }
 
     @Override
-    public void deleteMovie(Movie oldMovie) {
-
+    public void deleteByTitle(String title) {
+        moviesRepository.deleteByTitle(title);
     }
+
 }

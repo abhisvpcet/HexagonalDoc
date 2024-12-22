@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -54,8 +56,11 @@ public class MovieUseCase {
 
     }
 
-    public void deleteMovie(Movie movieTitle){
-        movieDao.deleteMovie(movieTitle);
+    @Transactional
+    public void deleteByTitle(@PathVariable String oldMovieTitle) {
+        if(oldMovieTitle==null || oldMovieTitle.trim().isEmpty()){
+            throw new IllegalArgumentException("Movie title cannot be null or empty");
+        }
+        movieDao.deleteByTitle(oldMovieTitle);
     }
-
 }
