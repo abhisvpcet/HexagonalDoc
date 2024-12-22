@@ -27,3 +27,9 @@ Testability: Core logic can be tested independently without external dependencie
 Separation of Concerns: Strong emphasis on isolating concerns (e.g., UI, data persistence, business logic).
 
 
+When to Choose Hexagonal Architecture in Spring Boot:
+If you need to design for scalability and extensibility.
+When you want to make the business logic framework-agnostic.
+To improve testability by decoupling the core domain.
+
+
