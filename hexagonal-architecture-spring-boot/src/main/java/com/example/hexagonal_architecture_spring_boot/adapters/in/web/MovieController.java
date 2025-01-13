@@ -12,28 +12,26 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/movies")
+@RequestMapping("/movie")
 public class MovieController {
-
 
     @Autowired
     private MovieUseCase movieUseCase;
 
-    @GetMapping
+    @GetMapping("/movies")
     public ResponseEntity<?> getAllMovies(){
         return ResponseEntity.ok(movieUseCase.getAllMovie());
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<?> saveMovies(@RequestBody NewMovieDto movieEntity){
         return ResponseEntity.status(HttpStatus.CREATED).body(movieUseCase.saveMovie(movieEntity));
     }
 
-    @PutMapping
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> updateMovies(@RequestBody Movie movieEntityDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(movieUseCase.updateMovie(movieEntityDto));
     }
-
 
     @DeleteMapping("/{oldMovieTitle}")
     public void deleteMovies(@PathVariable String oldMovieTitle){

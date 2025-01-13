@@ -1,6 +1,5 @@
 package com.example.hexagonal_architecture_spring_boot.application.usecases;
 
-
 import com.example.hexagonal_architecture_spring_boot.application.dao.MovieDao;
 import com.example.hexagonal_architecture_spring_boot.application.dto.NewMovieDto;
 import com.example.hexagonal_architecture_spring_boot.domain.Movie;
@@ -32,7 +31,7 @@ public class MovieUseCase {
         }
         movieDao.saveMovie(newMovieDto);
 
-        return "movie saved succesfully";
+        return "movie saved succesfuly";
     }
 
     public List<Movie> getAllMovie(){
